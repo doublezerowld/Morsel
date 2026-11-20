@@ -2,38 +2,117 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
-    <script type="module" src="/main.js" defer></script>
+    <title>Morsel</title>
+    <script src="./main.js" defer></script>
   </head>
 
-  <body>
-    <main class="container">
-      <h1>Welcome to Tauri</h1>
+  <body class="fullscreen">
+    <main id="viewport" class="flex-center flex-col fullscreen">
+        <header>
+            <h1>.- MORSEL</h1>
+        </header>
 
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
-      </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
+        <div id="view-container">
+            <section class="view" id="learn-page">
+                <h2>Learn</h2>
+                <h3>Select a topic</h3>
+                <div class="button-container">
+                    <button id="learn-morse-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-line-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12h2" /><path d="M17 12h2" /><path d="M11 12h2" /></svg>
+                        Morse
+                    </button>
+                    <button id="learn-qcodes-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-letter-q"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 9a5 5 0 0 0 -5 -5h-2a5 5 0 0 0 -5 5v6a5 5 0 0 0 5 5h2a5 5 0 0 0 5 -5v-6" /><path d="M13 15l5 5" /></svg>
+                        Q-codes
+                    </button>
+                    <button id="learn-prosigns-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-transfer"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
+                        Prosigns
+                    </button>
+                </div>
+            </section>
+            <section class="view" id="qso-page">
+                <h2>QSO Simulator</h2>
 
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a hi..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
+                <fieldset>
+                    <legend>Who goes first?</legend>
+
+                    <div class="flex-space-between">
+                        <div class="radio-container">
+                            <input id="user-calls" type="radio" name="qso-who-calls" value="user">
+                            <label for="user-calls">You </label>
+                        </div>
+                        <div class="radio-container">
+                            <input id="phone-calls" type="radio" name="qso-who-calls" value="phone">
+                            <label for="phone-calls">Phone</label>
+                        </div>
+                        <div>
+                            <input id="random-calls" type="radio" name="qso-who-calls" value="random">
+                            <label for="random-calls">Random</label>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="flex-space-between flex-col">
+                    <legend>QSO type</legend>
+                    <select name="qso-length" id="qso-length" aria-describedby="qso-length-description">
+                        <option value="short">Short (RST only)</option>
+                        <option value="medium">Normal (RST + Locator)</option>
+                        <option value="long">Long (RST, Locator, antennas)</option>
+                        <option value="custom">Custom (defined in settings)</option>
+                        <option value="random">Random</option>
+                    </select>
+
+                    <p id="qso-length-description" class="description">
+                        A standard QSO exchange including signal reports (RST) and your station's Maidenhead locator. It's good balance between a quick contact and a more detailed conversation.
+                    </p>
+                </fieldset>
+                <div class="button-container">
+                    <button id="start-qso-btn">Start!</button>
+                </div>
+            </section>
+            <section class="view" id="home-page">
+                <h2>Hello, SP2FOX!</h2>
+                <section id="statistics">
+                    <h3>Your stats</h3>
+                </section>
+            </section>
+            <section class="view" id="translator-page">
+                <h2>Translate</h2>
+                <input type="text" placeholder="Morse code">
+            </section>
+            <section class="view" id="options-page">
+                <h2>Options</h2>
+                <label for="wpm">Speed</label><br>
+                <input type="range" min="5" max="30" value="10" name="wpm">
+                <span>x WPM</span>
+            </section>
+        </div>
+
+        <nav id="bottom-navbar">
+            <button id="learn-btn" class="flex-center flex-col" aria-pressed="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-school"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg>
+                <span>Learn</span>
+            </button>
+            <button id="qso-btn" class="flex-center flex-col" aria-pressed="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-broadcast-tower"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /><path d="M9 21l3 -9l3 9" /><path d="M10 19h4" /></svg>
+                <span>QSO</span>
+            </button>
+            <button id="home-btn" class="flex-center flex-col active" aria-pressed="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+                <span>Home</span>
+            </button>
+            <button id="translator-btn" class="flex-center flex-col" aria-pressed="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-exchange"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" /><path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" />
+                </svg>
+                <span>Translate</span>
+            </button>
+            <button id="options-btn" class="flex-center flex-col" aria-pressed="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
+                <span>Options</span>
+            </button>
+        <nav/>
     </main>
   </body>
 </html>

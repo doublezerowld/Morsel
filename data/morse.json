@@ -1,0 +1,38 @@
+{
+  "alphabet": [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."],
+  "phrases": [
+    {
+      "term": "UR RST",
+      "meaning": "Your RST (Readability, Signal, Tone) report is ...",
+      "description": "A standard message containing an RST report for the receiving station.",
+      "examples": [
+        {
+          "message": "K1ABC DE SP2FOX UR RST 599 599",
+          "explanation": "SP2FOX gives SP3ABC a RST report of 599. Perfectly clear & strong signal, perfect tone."
+        }
+      ]
+    },
+    {
+      "term": "TNX FER QSO",
+      "meaning": "Thanks for the contact!",
+      "description": "Usually heard at the end of a QSO. 'FER' is used instead of 'FOR' to save time.",
+      "examples": [
+        {
+          "message": "W2XYZ //DE// SP2FOX //UR RST// 599 599 TNX FER QSO",
+          "explanation": "SP2FOX gives SP3ABC a RST report of 599. Perfectly clear & strong signal, perfect tone."
+        }
+      ]
+    }
+  ],
+  "prosigns": [
+    {
+      "prosign": "SOS",
+      "code": "...---...",
+      "meaning": "Distress signal",
+      "description": "Indicates that a station is reporting a grave and imminent danger requiring immediate assistance. Reserved for genuine distress calls only.",
+      "examples": [
+        "SOS SOS DE SP2FOX SP2FOX QTH JO93BD JO93BD"
+      ]
+    }
+  ]
+}

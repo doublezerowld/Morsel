@@ -1,0 +1,27 @@
+:root {
+    /* Colors */
+
+    --bg-color: hsla(223, 15%, 9%, 1);
+    --bg-dark: color-mix(in oklab, var(--bg-color) 85%,black 15%);
+    --bg-darker: color-mix(in oklab, var(--bg-color) 75%,black 25%);
+    --fg-color: hsla(45, 100%, 98%, 1);
+    --ocean-blue: hsla(201, 67%, 44%, 1);
+    --cerulean: hsla(194, 72%, 34%, 1);
+    --mint-leaf: hsla(170, 100%, 37%, 1);
+
+    --inactive-color: color-mix(in oklab, var(--bg-color) 25%,var(--fg-color) 75%);
+
+    /* Other */
+    --gradient-direction: 120deg;
+
+    /* Gradients */
+    --bg-gradient: linear-gradient(var(--gradient-direction), var(--bg-color), var(--bg-dark));
+}
+
+/* dark theme is default */
+[data-theme="light"] {
+    color-scheme: light;
+
+    --bg-color: hsla(45, 100%, 98%, 1);
+    --fg-color: hsla(223, 15%, 9%, 1);
+}
