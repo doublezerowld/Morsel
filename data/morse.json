@@ -1,5 +1,40 @@
 {
   "alphabet": [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."],
+  "abbreviations": [
+    {
+      "term": "CQ",
+      "meaning": "Calling any station",
+      "description": "Resembles \"seek you\" when pronounced. Used when calling any station.",
+      "examples": [
+        {
+          "message": "CQ CQ CQ DE *call* K",
+          "explanation": "*call* calls any station and invites anyone to answer."
+        }
+      ]
+    },
+    {
+      "term": "DE",
+      "meaning": "From",
+      "description": "A French word meaning \"from\". Used very often in morse transmissions.",
+      "examples": [
+        {
+          "message": "K1ABC DE *call*",
+          "explanation": "*call* calls K1ABC (\"K1ABC from *call*\")."
+        }
+      ]
+    },
+    {
+      "term": "RST",
+      "meaning": "Readability, Signal, Tone",
+      "description": "A French word meaning \"from\". Used very often in morse transmissions.",
+      "examples": [
+        {
+          "message": "K1ABC DE *call*",
+          "explanation": "*call* calls K1ABC (\"K1ABC from *call*\")."
+        }
+      ]
+    },
+  ],
   "phrases": [
     {
       "term": "UR RST",
@@ -7,8 +42,8 @@
       "description": "A standard message containing an RST report for the receiving station.",
       "examples": [
         {
-          "message": "K1ABC DE SP2FOX UR RST 599 599",
-          "explanation": "SP2FOX gives SP3ABC a RST report of 599. Perfectly clear & strong signal, perfect tone."
+          "message": "K1ABC DE *call* UR RST 599 599 KN",
+          "explanation": "*call* gives K1ABC a RST report of 599. Perfectly clear & strong signal, perfect tone."
         }
       ]
     },
@@ -18,20 +53,58 @@
       "description": "Usually heard at the end of a QSO. 'FER' is used instead of 'FOR' to save time.",
       "examples": [
         {
-          "message": "W2XYZ //DE// SP2FOX //UR RST// 599 599 TNX FER QSO",
-          "explanation": "SP2FOX gives SP3ABC a RST report of 599. Perfectly clear & strong signal, perfect tone."
+          "message": "W2XYZ DE *call* UR RST 599 599 TNX FER QSO",
+          "explanation": "*call* thanks W2XYZ for the contact after giving them an RST report."
         }
       ]
     }
   ],
   "prosigns": [
     {
+      "prosign": "K",
+      "code": "-.-",
+      "meaning": "Go ahead (any station)",
+      "description": "Invites any station to transmit.",
+      "examples": [
+        "CQ CQ CQ DE *call* *call* K"
+      ]
+    },
+    {
+      "prosign": "KN",
+      "code": "-.--.",
+      "meaning": "Go ahead (specific station)",
+      "description": "Invites the adressed station to respond.",
+      "examples": [
+        "K1ABC DE *call* UR RST 599 599 KN"
+      ]
+    },
+    {
       "prosign": "SOS",
       "code": "...---...",
       "meaning": "Distress signal",
       "description": "Indicates that a station is reporting a grave and imminent danger requiring immediate assistance. Reserved for genuine distress calls only.",
       "examples": [
-        "SOS SOS DE SP2FOX SP2FOX QTH JO93BD JO93BD"
+        "SOS SOS DE SP2FOX SP2FOX QTH JO94II01"
+      ]
+    }
+  ],
+  "qcodes": [
+    {
+      "qcode": "QTH",
+      "code": "--.- - ....",
+      "meaning": "Location",
+      "description": "QTH ... - My location is ...\nQTH? - What is your location?"
+      "examples": [
+
+      ]
+    },
+    {
+      "qcode": "QSO",
+      "code": "--.- ... ---",
+      "meaning": "Exchange / Contact",
+      "description": "Used to refer to an contact between two stations. Usually involves an exchange of RS(T) reports. Used in Morse and Phone transmissions."
+      "examples": [
+
       ]
     }
   ]

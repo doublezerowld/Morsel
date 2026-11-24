@@ -1,5 +1,11 @@
+/* refactor this someday */
+
 @import "./fonts.css";
 @import "./variables.css";
+
+* {
+    accent-color: var(--accent-color);
+}
 
 :root {
   font-family: 'DM Sans', sans-serif;
@@ -35,13 +41,41 @@ main header {
 
 button {
     font-family: inherit;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0.25rem;
 }
 
-/* universal classes */
+select {
+    width: 100%;
+    height: 2rem;
+}
+
+
+datalist { /* only works for even step */
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+
+  margin-left: 0.2dvw;
+
+  font-size: smaller;
+  color: var(--inactive-color);
+}
+
+
+textarea:disabled {
+    background-color: var(--bg-color);
+}
+
+/* shared classes */
 
 .fullscreen {
     width: 100%;
     min-height: 100vh;
+    max-height: 100vh;
 }
 
 .flex-center {
@@ -50,16 +84,45 @@ button {
     justify-content: center;
 }
 
+.flex-left {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
 .flex-space-between {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
 
 .flex-col {
     display: flex;
     flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-container label {
+    padding-right: var(--phi-small-rem);
+}
+
+.input-container input[type="range"] {
+    flex: 1;
 }
 
 /* classes */
@@ -91,16 +154,113 @@ button {
     flex-direction: row;
     align-items: center;
 
-    width: max-content;
     padding: 0.5rem;
-    border: 1px solid var(--cerulean);
-    border-radius: 0.618rem;
-    margin: 0.382rem auto;
-    background-color: var(--ocean-blue);
+    border: 1px solid var(--accent-color-dark);
+    border-radius: var(--phi-small-rem);
+    margin: var(--phi-diff-rem) auto;
+    background-color: var(--accent-color);
+
+    font-size: 1rem;
+}
+
+.button-container button svg {
+    margin-right: 0.25rem;
 }
 
 .view fieldset {
     box-sizing: content-box;
+}
+
+.learning-stats-container {
+    padding: 0 2rem;
+}
+
+/* translator */
+
+.translator-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 10rem;
+
+    padding: 0.618rem 0.618rem;
+
+    font-size: 1rem;
+    text-align: left;
+    vertical-align: top;
+
+    resize: none;
+}
+
+.textarea-container {
+    margin: 0.5rem;
+}
+
+.morse-textarea {
+    position: relative;
+}
+
+.morse-listen-btn {
+    position: absolute;
+    bottom: 0.618rem;
+    right: 0.618rem;
+    z-index: 1;
+
+    background: transparent;
+    border: none;
+    border-radius: 0.382rem;
+
+    background-color: color-mix(in oklab, var(--bg-darker) 50%, transparent);
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* learn page */
+
+.subject-list {
+    margin: 0;
+    padding: 0 var(--phi-small-rem);
+    box-sizing: border-box;
+
+    list-style-type: none;
+}
+
+.subject-item {
+    margin-bottom: 1rem;
+
+    border: 1px solid var(--fg-color);
+    border-radius: var(--phi-small-rem);
+
+    padding: var(--phi-small-rem) 0;
+
+    background-color: var(--bg-darker);
+
+    cursor: pointer;
+}
+
+.subject-name h3 {
+    margin: var(--phi-diff-rem) var(--phi-diff-rem);
+}
+
+.subject-description {
+    margin: var(--phi-diff-rem) 0;
+}
+
+.subject-name, .subject-description {
+    margin: auto var(--phi-small-rem);
+}
+
+.subject-description {
+    text-align: left;
+}
+
+
+/* options */
+.wpm-slider-container {
+    width: 100%;
+}
+
+.wpm-slider-container input {
+    width: 100%;
 }
 
 /* ids */
@@ -159,7 +319,7 @@ button {
 }
 
 #bottom-navbar button.active {
-    color: var(--ocean-blue);
+    color: var(--accent-color);
 }
 
 /* qso */
@@ -176,9 +336,4 @@ button {
 #qso-length-description {
     font-size: smaller;
     line-height: 1.5;
-}
-
-#qso-length {
-    width: 100%;
-    height: 2rem;
 }

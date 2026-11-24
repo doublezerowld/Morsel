@@ -5,14 +5,22 @@
     --bg-dark: color-mix(in oklab, var(--bg-color) 85%,black 15%);
     --bg-darker: color-mix(in oklab, var(--bg-color) 75%,black 25%);
     --fg-color: hsla(45, 100%, 98%, 1);
-    --ocean-blue: hsla(201, 67%, 44%, 1);
-    --cerulean: hsla(194, 72%, 34%, 1);
+    --accent-color: hsla(201, 67%, 44%, 1);
+    --accent-color-dark: hsla(194, 72%, 34%, 1);
     --mint-leaf: hsla(170, 100%, 37%, 1);
 
     --inactive-color: color-mix(in oklab, var(--bg-color) 25%,var(--fg-color) 75%);
 
     /* Other */
     --gradient-direction: 120deg;
+    --phi-large: 1.618;
+    --phi-small: 0.618;
+    --phi-diff: 0.382;
+
+    --phi-large-rem: 1.618rem;
+    --phi-small-rem: 0.618rem;
+    --phi-diff-rem: 0.382rem;
+
 
     /* Gradients */
     --bg-gradient: linear-gradient(var(--gradient-direction), var(--bg-color), var(--bg-dark));

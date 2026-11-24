@@ -5,35 +5,46 @@
     <link rel="stylesheet" href="css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morsel</title>
-    <script src="./main.js" defer></script>
+    <script type="module" src="./main.js" defer></script>
   </head>
 
   <body class="fullscreen">
     <main id="viewport" class="flex-center flex-col fullscreen">
         <header>
-            <h1>.- MORSEL</h1>
+            <h1>.- morsel</h1>
         </header>
 
         <div id="view-container">
-            <section class="view" id="learn-page">
+            <section class="view" id="learn-view">
                 <h2>Learn</h2>
-                <h3>Select a topic</h3>
-                <div class="button-container">
-                    <button id="learn-morse-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-line-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12h2" /><path d="M17 12h2" /><path d="M11 12h2" /></svg>
-                        Morse
-                    </button>
-                    <button id="learn-qcodes-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-letter-q"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 9a5 5 0 0 0 -5 -5h-2a5 5 0 0 0 -5 5v6a5 5 0 0 0 5 5h2a5 5 0 0 0 5 -5v-6" /><path d="M13 15l5 5" /></svg>
-                        Q-codes
-                    </button>
-                    <button id="learn-prosigns-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-transfer"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
-                        Prosigns
-                    </button>
-                </div>
+                <ul class="subject-list">
+                    <li class="subject-item" id="learn-morse">
+                        <div class="subject-name flex-row flex-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-line-dashed"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12h2" /><path d="M17 12h2" /><path d="M11 12h2" /></svg>
+                            <h3>Morse</h3>
+                        </div>
+                        <hr>
+                        <p class="subject-description">Master reading, transmitting and decoding morse by ear, all at your own pace.</p>
+                    </li>
+                    <li class="subject-item" id="learn-morse">
+                        <div class="subject-name flex-row flex-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-square-letter-q"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14" /><path d="M12 8a2 2 0 0 1 2 2v4a2 2 0 1 1 -4 0v-4a2 2 0 0 1 2 -2" /><path d="M13 15l1 1" /></svg>
+                            <h3>Q-Codes</h3>
+                        </div>
+                        <hr>
+                        <p class="subject-description">Understand the 3-letter codes used in actual morse transmissions.</p>
+                    </li>
+                    <li class="subject-item" id="learn-prosigns">
+                        <div class="subject-name flex-row flex-left">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-transfer"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M20 10h-16l5.5 -6" /><path d="M4 14h16l-5.5 6" /></svg>
+                            <h3>Prosigns</h3>
+                        </div>
+                        <hr>
+                        <p class="subject-description">Learn the basic symbol combinations that control where the exchange goes.</p>
+                    </li>
+                </ul>
             </section>
-            <section class="view" id="qso-page">
+            <section class="view" id="qso-view">
                 <h2>QSO Simulator</h2>
 
                 <fieldset>
@@ -49,44 +60,126 @@
                             <label for="phone-calls">Phone</label>
                         </div>
                         <div>
-                            <input id="random-calls" type="radio" name="qso-who-calls" value="random">
+                            <input id="random-calls" type="radio" name="qso-who-calls" value="random" checked="true" aria-selected="true">
                             <label for="random-calls">Random</label>
                         </div>
                     </div>
                 </fieldset>
                 <fieldset class="flex-space-between flex-col">
-                    <legend>QSO type</legend>
+                    <legend>QSO Settings</legend>
+
+                    <label for="qso-length">Length</label>
                     <select name="qso-length" id="qso-length" aria-describedby="qso-length-description">
                         <option value="short">Short (RST only)</option>
                         <option value="medium">Normal (RST + Locator)</option>
                         <option value="long">Long (RST, Locator, antennas)</option>
-                        <option value="custom">Custom (defined in settings)</option>
                         <option value="random">Random</option>
+                        <option value="custom">Custom (defined in settings)</option>
                     </select>
 
                     <p id="qso-length-description" class="description">
                         A standard QSO exchange including signal reports (RST) and your station's Maidenhead locator. It's good balance between a quick contact and a more detailed conversation.
                     </p>
+
+
+                    <label for="qso-start">Start with</label>
+                    <select name="qso-start" id="qso-start">
+                        <option value="cq">CQ</option>
+                        <option value="call">Callsigns</option>
+                        <option value="random">Random</option>
+                    </select>
+                </fieldset>
+                <fieldset class="flex-col">
+                    <legend>Extra options</legend>
+
+                    <div class="input-container">
+                        <label for="noise-floor">Noise floor</label>
+                        <div class="flex-col flex-1">
+                            <input
+                                id="noise-floor"
+                                type="range"
+                                min="1"
+                                max="9"
+                                step="1"
+                                value="6"
+                                list="noise-floor-ticks"
+                            >
+
+                            <datalist id="noise-floor-ticks">
+                                <option value="1" label="S1">S1</option>
+                                <option value="2" label="S2"></option>
+                                <option value="3" label="S3"></option>
+                                <option value="4" label="S4"></option>
+                                <option value="5" label="S5"></option>
+                                <option value="6" label="S6"></option>
+                                <option value="7" label="S7"></option>
+                                <option value="8" label="S8"></option>
+                                <option value="9" label="S9"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <label for="qsb">QSB</label>
+                        <div class="flex-col flex-1">
+                            <input id="qsb" type="range" min="0" max="100" value="0" list="qsb-ticks">
+                            <datalist id="qsb-ticks">
+                                <option value="0" label="0%"></option>
+                                <option value="100" label="100%"></option>
+                            </datalist>
+                        </div>
+                    </div>
                 </fieldset>
                 <div class="button-container">
                     <button id="start-qso-btn">Start!</button>
                 </div>
             </section>
-            <section class="view" id="home-page">
-                <h2>Hello, SP2FOX!</h2>
+            <section class="view" id="home-view">
+                <h2>Hello, N0CALL!</h2>
                 <section id="statistics">
-                    <h3>Your stats</h3>
+                    <h3>Your stats:</h3>
+                    <div class="learning-stats-container">
+                        <canvas id="letters"></canvas>
+                    </div>
                 </section>
             </section>
-            <section class="view" id="translator-page">
+            <section class="view" id="translator-view">
                 <h2>Translate</h2>
-                <input type="text" placeholder="Morse code">
+                <div class="textarea-container morse-textarea">
+                    <textarea id="translator-input" class="translator-textarea morse-input" placeholder="Morse code"></textarea>
+                    <button class="morse-listen-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-volume">
+	<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+	<path d="M15 8a5 5 0 0 1 0 8" />
+	<path d="M17.7 5a9 9 0 0 1 0 14" />
+	<path d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="textarea-container">
+                    <textarea id="translator-output" class="translator-textarea" placeholder="Text" disabled="true"></textarea>
+                </div>
+                <div id="translator-controls" class="button-container">
+                    <button id="reverse-translation-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-arrows-down-up">
+	<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+	<path d="M17 3l0 18" />
+	<path d="M10 18l-3 3l-3 -3" />
+	<path d="M7 21l0 -18" />
+	<path d="M20 6l-3 -3l-3 3" />
+                        </svg>
+                        Reverse
+                    </button>
+                </div>
             </section>
-            <section class="view" id="options-page">
+            <section class="view" id="options-view">
                 <h2>Options</h2>
-                <label for="wpm">Speed</label><br>
-                <input type="range" min="5" max="30" value="10" name="wpm">
-                <span>x WPM</span>
+                <div class="wpm-option-container flex-col flex-center">
+                    <div class="wpm-slider-container flex-row">
+                        <label for="wpm">Speed</label><br>
+                        <input id="wpm" type="range" min="5" max="100" value="10" name="wpm">
+                    </div>
+                    <span>x WPM 🐢</span>
+                </div>
             </section>
         </div>
 

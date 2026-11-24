@@ -1,0 +1,3 @@
+"build": {
+    "frontendDist": "../src"
+  },

@@ -1,0 +1,29 @@
+{
+  "name": "morsel",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">     <img alt=\"Tauri\" src=\"https://img.shields.io/badge/Tauri-Version%202-blue?logo=tauri\">     <img alt=\"Rust\" src=\"https://img.shields.io/badge/-Rust-orange?logo=rust\"> </p>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "tauri": "tauri"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doublezerowld/Morsel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/doublezerowld/Morsel/issues"
+  },
+  "homepage": "https://github.com/doublezerowld/Morsel#readme",
+  "dependencies": {
+    "@tauri-apps/plugin-sql": "^2.6.0",
+    "chart.js": "^4.6.1"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+}
