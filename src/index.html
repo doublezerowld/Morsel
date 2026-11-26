@@ -5,15 +5,13 @@
     <link rel="stylesheet" href="css/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morsel</title>
-    <script type="module" src="./main.js" defer></script>
+    <script type="module" src="./main.ts" defer></script>
   </head>
-
   <body class="fullscreen">
-    <main id="viewport" class="flex-center flex-col fullscreen">
-        <header>
-            <h1>.- morsel</h1>
-        </header>
-
+    <header>
+        <h1>.- morsel</h1>
+    </header>
+    <main id="viewport" class="flex-center flex-col">
         <div id="view-container">
             <section class="view" id="learn-view">
                 <h2>Learn</h2>
@@ -105,7 +103,7 @@
                                 list="noise-floor-ticks"
                             >
 
-                            <datalist id="noise-floor-ticks">
+                            <datalist id="noise-floor-ticks" class="even-step">
                                 <option value="1" label="S1">S1</option>
                                 <option value="2" label="S2"></option>
                                 <option value="3" label="S3"></option>
@@ -173,39 +171,77 @@
             </section>
             <section class="view" id="options-view">
                 <h2>Options</h2>
-                <div class="wpm-option-container flex-col flex-center">
-                    <div class="wpm-slider-container flex-row">
-                        <label for="wpm">Speed</label><br>
-                        <input id="wpm" type="range" min="5" max="100" value="10" name="wpm">
+                <fieldset>
+                    <legend>Operator Info</legend>
+                    <div class="input-container">
+                        <label for="name-textbox">Name</label>
+                        <input class="flex-1" id="name-textbox" name="name-textbox" type="text" placeholder="John">
                     </div>
-                    <span>x WPM 🐢</span>
-                </div>
+                    <div class="input-container">
+                        <label for="callsign-textbox">Callsign</label>
+                        <input class="flex-1" id="callsign-textbox" name="callsign-textbox" type="text" placeholder="N0CALL">
+                    </div>
+                    <div class="input-container">
+                        <label for="locator-textbox">Locator</label>
+                        <input class="flex-1" id="locator-textbox" name="locator-textbox" type="text" placeholder="JOO1AA">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Learning</legend>
+                    <div class="wpm-option-container flex-col flex-center">
+                        <div class="wpm-slider-container flex-row">
+                            <label for="wpm">Speed</label><br>
+                            <input id="wpm" type="range" min="5" max="100" value="20" name="wpm">
+                        </div>
+                        <span>20 WPM 🚶</span>
+                    </div>
+                    <div class="wpm-option-container flex-col flex-center">
+                        <div class="wpm-slider-container flex-row">
+                            <label for="wpm">Farnsworth</label><br>
+                            <input id="wpm" type="range" min="5" max="20" value="20" name="wpm">
+                        </div>
+                        <span>10 WPM 🚶</span>
+                    </div>
+                    <p>Digits</p>
+                    <div class="learning-button-container">
+                        <button class="learning-toggle-button">0</button>
+                        <button class="learning-toggle-button">1</button>
+                        <button class="learning-toggle-button">2</button>
+                        <button class="learning-toggle-button">3</button>
+                        <button class="learning-toggle-button">4</button>
+                        <button class="learning-toggle-button">5</button>
+                        <button class="learning-toggle-button">6</button>
+                        <button class="learning-toggle-button">7</button>
+                        <button class="learning-toggle-button">8</button>
+                        <button class="learning-toggle-button">9</button>
+                    </div>
+                </fieldset>
+
             </section>
         </div>
-
-        <nav id="bottom-navbar">
-            <button id="learn-btn" class="flex-center flex-col" aria-pressed="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-school"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg>
-                <span>Learn</span>
-            </button>
-            <button id="qso-btn" class="flex-center flex-col" aria-pressed="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-broadcast-tower"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /><path d="M9 21l3 -9l3 9" /><path d="M10 19h4" /></svg>
-                <span>QSO</span>
-            </button>
-            <button id="home-btn" class="flex-center flex-col active" aria-pressed="true">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                <span>Home</span>
-            </button>
-            <button id="translator-btn" class="flex-center flex-col" aria-pressed="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-exchange"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" /><path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" />
-                </svg>
-                <span>Translate</span>
-            </button>
-            <button id="options-btn" class="flex-center flex-col" aria-pressed="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
-                <span>Options</span>
-            </button>
-        <nav/>
     </main>
+    <nav id="bottom-navbar">
+        <button id="learn-btn" class="flex-center flex-col" aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-school"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M22 9l-10 -4l-10 4l10 4l10 -4v6" /><path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4" /></svg>
+            <span>Learn</span>
+        </button>
+        <button id="qso-btn" class="flex-center flex-col" aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-broadcast-tower"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" /><path d="M16.616 13.924a5 5 0 1 0 -9.23 0" /><path d="M20.307 15.469a9 9 0 1 0 -16.615 0" /><path d="M9 21l3 -9l3 9" /><path d="M10 19h4" /></svg>
+            <span>QSO</span>
+        </button>
+        <button id="home-btn" class="flex-center flex-col active" aria-pressed="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
+            <span>Home</span>
+        </button>
+        <button id="translator-btn" class="flex-center flex-col" aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-exchange"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M19 8v5a5 5 0 0 1 -5 5h-3l3 -3m0 6l-3 -3" /><path d="M5 16v-5a5 5 0 0 1 5 -5h3l-3 -3m0 6l3 -3" />
+            </svg>
+            <span>Translate</span>
+        </button>
+        <button id="options-btn" class="flex-center flex-col" aria-pressed="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-settings"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
+            <span>Options</span>
+        </button>
+    <nav/>
   </body>
 </html>

@@ -1,24 +1,35 @@
-const { invoke } = window.__TAURI__.core;
-
 import Chart from 'chart.js/auto';
+import { invoke } from '@tauri-apps/api/core';
 
 /* Navigation */
-let isProgrammaticScroll = true; // Left 'true' due to the app always scrolling to the view contained in the URL hash (or home view if none exists)
+
+// Left 'true' due to the app always scrolling to the view contained in the URL hash
+// (or home view if none exists)
+let isProgrammaticScroll = true;
 
 const viewContainer = document.querySelector("#view-container");
-const views = document.querySelectorAll("#view-container .view");
+const views = document.querySelectorAll<HTMLElement>("#view-container .view");
 
 const navbarButtons = [...document.querySelectorAll("#bottom-navbar button")];
 
 /* UI Components */
 const translatorInput = document.querySelector("#translator-input");
+const translatorOutput = document.querySelector("#translator-output");
+
+// todo: add ui components for settings and all that, then have labels respond to <input> changes
 
 /**
  *
- * @param {Number} idx - Index of the view
- */
-function viewChangedHandler(idx) {
+ * @param {number} idx - Index of the view
+ *
+**/
+function viewChangedHandler(idx: number) {
   let activeButton = navbarButtons[idx];
+
+  if (!activeButton) {
+      console.error(`Invalid view index: ${idx}`);
+      return;
+  }
 
   navbarButtons.forEach((button) => {
     button.classList.remove("active");
@@ -29,13 +40,17 @@ function viewChangedHandler(idx) {
   activeButton.setAttribute("aria-pressed", "true");
 }
 
-function morseInputHandler(event) {
+function morseInputHandler(event: Event): void {
+    const target = event.target as HTMLTextAreaElement;
+    const input = target.value;
 
-  // Send to Rust
-  console.log(event.target.value);
-  invoke('get_chars');
+    invoke<string>('convert_from_morse', { input }).then((message: string) => {
+        if (!translatorOutput) return;
+        translatorOutput.textContent = message;
+    });
 }
 
+// todo: proper chart
 (async function() {
   const data = [
     { day: 1, count: 8 },
@@ -47,7 +62,7 @@ function morseInputHandler(event) {
   ];
 
   new Chart(
-    document.getElementById('letters'),
+    document.getElementById('letters') as HTMLCanvasElement,
     {
       type: 'bar',
       data: {
@@ -91,6 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  if (!viewContainer) {
+      throw new Error('viewContainer not found');
+  }
+
   viewContainer.scrollTo({
     left: views[initialView].offsetLeft,
     behavior: 'instant'
@@ -129,6 +148,10 @@ document.addEventListener("DOMContentLoaded", () => {
   /*
   * UI
   */
+
+  if (!translatorInput) {
+      throw new Error('translatorInput not found');
+  }
 
   translatorInput.addEventListener("input", (str) => { morseInputHandler(str) });
 });

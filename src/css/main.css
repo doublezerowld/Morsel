@@ -5,6 +5,7 @@
 
 * {
     accent-color: var(--accent-color);
+    font-family: inherit;
 }
 
 :root {
@@ -23,16 +24,24 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     margin: 0;
+    box-sizing: border-box;
+
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
 
     color: var(--fg-color);
-    background: var(--bg-gradient);
-
-    display: flex;
-    justify-content: center;
+    background: var(--bg-darker);
 }
 
-main header {
+header {
     width: 100%;
     text-align: center;
 
@@ -40,12 +49,12 @@ main header {
 }
 
 button {
-    font-family: inherit;
 
     display: flex;
     align-items: center;
 
     padding: 0.25rem;
+    font-family: inherit;
 }
 
 select {
@@ -54,7 +63,7 @@ select {
 }
 
 
-datalist { /* only works for even step */
+datalist.even-step { /* only works for even step */
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -74,8 +83,7 @@ textarea:disabled {
 
 .fullscreen {
     width: 100%;
-    min-height: 100vh;
-    max-height: 100vh;
+    height: 100vh;
 }
 
 .flex-center {
@@ -115,6 +123,8 @@ textarea:disabled {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    margin: 2px 0;
 }
 
 .input-container label {
@@ -263,10 +273,35 @@ textarea:disabled {
     width: 100%;
 }
 
+.learning-button-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-flow: row;
+    gap: 10px;
+}
+
+.learning-toggle-button {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+
+    border-radius: 2rem;
+    border: 1px solid var(--fg-color);
+    background-color: var(--bg-color);
+}
+
 /* ids */
 
 #viewport {
+    width: 100%;
+
     overflow: hidden;
+    flex: 1;
+
+    background: var(--bg-gradient);
 }
 
 #view-container {

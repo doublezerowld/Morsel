@@ -20,10 +20,11 @@
   },
   "homepage": "https://github.com/doublezerowld/Morsel#readme",
   "dependencies": {
-    "@tauri-apps/plugin-sql": "^2.6.0",
+    "@tauri-apps/api": "^2.12.5",
     "chart.js": "^4.6.1"
   },
   "devDependencies": {
+    "typescript": "^7.0.2",
     "vite": "^8.3.8"
   }
 }
